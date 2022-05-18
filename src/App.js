@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Login from './pages/Login';
 import Search from './pages/Search';
 import Album from './pages/Album';
+import Favorites from './pages/Favorites';
 
 class App extends React.Component {
   render() {
@@ -13,6 +14,7 @@ class App extends React.Component {
           <Login />
           <Search />
           <Album />
+          <Favorites />
         </BrowserRouter>
       </div>
     );
