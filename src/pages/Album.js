@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 class Album extends React.Component {
   render() {
