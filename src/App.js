@@ -5,12 +5,12 @@ import Content from './components/Content';
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <p>TrybeTunes</p>
-        <BrowserRouter>
+      <BrowserRouter>
+        <div>
+          <p>TrybeTunes</p>
           <Content />
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

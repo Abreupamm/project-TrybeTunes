@@ -1,5 +1,6 @@
 import React from 'react';
 import { getUser } from '../services/userAPI';
+import NavLinks from './NavLinks';
 
 class Header extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class Header extends React.Component {
     const { userName, isUser } = this.state;
     return (
       <header data-testid="header-component">
+        <NavLinks />
         <p data-testid="header-user-name">
           { isUser ? userName : 'Carregando...' }
         </p>
