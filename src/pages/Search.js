@@ -7,6 +7,16 @@ class Search extends React.Component {
       <div data-testid="page-search">
         <Header />
         <h1>Search</h1>
+        <input
+          data-testid="search-artist-input"
+          type="text"
+        />
+        <button
+          data-testid="search-aetist-button"
+          type="button"
+        >
+          Pesquisar
+        </button>
       </div>
     );
   }
