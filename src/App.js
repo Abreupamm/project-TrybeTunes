@@ -1,12 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Login from './pages/Login';
-import Search from './pages/Search';
-import Album from './pages/Album';
-import Favorites from './pages/Favorites';
-import Profile from './pages/Profile';
-import ProfileEdit from './pages/ProfileEdit';
-import NotFound from './pages/NotFound';
+import Content from './components/Content';
 
 class App extends React.Component {
   render() {
@@ -14,13 +8,7 @@ class App extends React.Component {
       <div>
         <p>TrybeTunes</p>
         <BrowserRouter>
-          <Login />
-          <Search />
-          <Album />
-          <Favorites />
-          <Profile />
-          <ProfileEdit />
-          <NotFound />
+          <Content />
         </BrowserRouter>
       </div>
     );
