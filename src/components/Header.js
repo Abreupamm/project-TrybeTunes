@@ -6,14 +6,15 @@ class Header extends React.Component {
     userName: '',
     isUser: false,
   }
-  handleRenderUser = async () => {
-    const response = await getUser(); 
-    this.setState({ isUser: true })
-    return this.setState({userName: response.name})        
-  }
-  
+
   componentDidMount() {
-   this.handleRenderUser()
+    this.handleRenderUser();
+  }
+
+  handleRenderUser = async () => {
+    const response = await getUser();
+    this.setState({ isUser: true });
+    return this.setState({ userName: response.name });
   }
 
   render() {
@@ -21,7 +22,7 @@ class Header extends React.Component {
     return (
       <header data-testid="header-component">
         <p data-testid="header-user-name">
-          {isUser ? userName : "Carregando..."}
+          { isUser ? userName : 'Carregando...' }
         </p>
       </header>
     );
