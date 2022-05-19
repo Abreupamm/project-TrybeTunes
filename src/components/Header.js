@@ -4,16 +4,24 @@ import { getUser } from '../services/userAPI';
 class Header extends React.Component {
   state = {
     userName: '',
+    isUser: false,
+  }
+  handleRenderUser = async () => {
+    const response = await getUser(); 
+    this.setState({ isUser: true })
+    return this.setState({userName: response.name})        
+  }
+  
+  componentDidMount() {
+   this.handleRenderUser()
   }
 
   render() {
-    const { userName } = this.state;
-    // const user = getUser();
-    // this.setState({userName: user})
+    const { userName, isUser } = this.state;
     return (
       <header data-testid="header-component">
-        <p data-testid="user-name">
-          {userName !== '' ? userName : "carregando..."}
+        <p data-testid="header-user-name">
+          {isUser ? userName : "Carregando..."}
         </p>
       </header>
     );

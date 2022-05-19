@@ -26,7 +26,7 @@ class Login extends React.Component {
   handleOnClick = async () => {
     const { userName } = this.state;
     const { history } = this.props;
-     this.setState({ isLoggedIn: true })
+    this.setState({ isLoggedIn: true })
     await createUser({ name: userName })
     this.setState({ isLoggedIn: false })
     history.push('/search');
