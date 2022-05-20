@@ -49,16 +49,18 @@ width: 50px;
 margin-left: 10px;
 }
 
+.login-page .page-login-gif {
+  background-image: url(https://gifimage.net/wp-content/uploads/2018/04/ondas-sonoras-gif-8.gif);
+  height: 300px;
+  /* border: red solid 1px; */
+}
+
 .container-login {
-background-color: aliceblue;
-width: 500px;
-height: 150px;
-padding: 30px;
+margin-top: 0;
+padding: 0px;
 display: flex;
 flex-direction: column;
 text-align: center;
-margin: auto;
-border-radius: 10px;
 }
 
 .container-login input {
@@ -66,6 +68,7 @@ border-radius: 10px;
   height: 30px;
   margin-top: 30px;
   font-size: 20px;
+  border-radius: 10px;
 }
 
 .container-login button:disabled {
@@ -82,4 +85,5 @@ color: rgb(56, 52, 52);
   font-size: 20px;
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 5px;
 }

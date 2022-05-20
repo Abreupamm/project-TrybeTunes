@@ -66,6 +66,7 @@ class Login extends React.Component {
               Entrar
             </button>
           </form>
+        <div className="page-login-gif"/>
         </div>
       </div>
     );
