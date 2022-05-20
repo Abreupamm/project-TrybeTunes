@@ -10,14 +10,13 @@ class Search extends React.Component {
   isButtonDisabld = () => {
     const { artistName } = this.state;
     if (artistName.length > 1) {
-        return this.setState({ disabled: false })
-      }
-    return this.setState({ disabled: true })
+      return this.setState({ disabled: false });
+    }
+    return this.setState({ disabled: true });
   }
 
   handleOnChange = (event) => {
     const { value } = event.target;
-    const { artistName } = this.state;
     this.setState({ artistName: value }, () => {
       this.isButtonDisabld();
     });

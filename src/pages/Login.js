@@ -15,7 +15,7 @@ class Login extends React.Component {
     if (userName.length > 2) {
       return this.setState({ disabled: false });
     }
-    return this.setState({ disabled: true })
+    return this.setState({ disabled: true });
   }
 
   handleOnChange = (event) => {
