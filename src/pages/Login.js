@@ -39,23 +39,33 @@ class Login extends React.Component {
       return <Loading />;
     }
     return (
-      <div data-testid="page-login">
-        <h1>Login</h1>
-        <form>
-          <input
-            data-testid="login-name-input"
-            type="text"
-            onChange={ this.handleOnChange }
-          />
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            disabled={ disabled }
-            onClick={ this.handleOnClick }
-          >
-            Entrar
-          </button>
-        </form>
+      <div className="login-page">
+        <div className="title">
+          <h1>Trybe</h1>
+          <img alt="logo" src="https://cdn-icons-png.flaticon.com/512/5885/5885170.png" />
+          <h2>Tunes</h2>
+        </div>
+        <div
+          data-testid="page-login"
+          className="container-login"
+        >
+          <form>
+            <input
+              data-testid="login-name-input"
+              type="text"
+              onChange={ this.handleOnChange }
+            />
+            <br />
+            <button
+              type="button"
+              data-testid="login-submit-button"
+              disabled={ disabled }
+              onClick={ this.handleOnClick }
+            >
+              Entrar
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
