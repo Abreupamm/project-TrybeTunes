@@ -11,6 +11,7 @@ class Album extends React.Component {
   artistAlbuns = async () => {
     const { id } = this.props.match.params;
     const musics = await getMusics(id);
+    console.log(musics);
     this.setState({musicsList: musics})
     return this.setState({artist: musics[0]});
   }
@@ -26,14 +27,14 @@ class Album extends React.Component {
         <br />
         <span data-testid="album-name">{artist.collectionName}</span>
         {
-          musicsList.filter((musics) => (
-            musics.wrapperType === 'track'
-          )).map((music) => (
-            <MusicCard
-              trackName={music.trackName}
-              previewUrl={music.previewUrl}
-            />
-          ))
+          musicsList.map((music, index) => {
+            if (index > 0) {
+              return <MusicCard
+                trackName={music.trackName}
+                previewUrl={music.previewUrl}
+              />
+            }
+          })
         }
       </div>
     );
