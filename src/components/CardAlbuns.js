@@ -22,8 +22,8 @@ class CardAlbuns extends React.Component {
 }
 
 CardAlbuns.propType = {
-  album: PropTypes.shape({
-    collectionId: PropTypes.number.isRequired,
+  album: PropTypes.exact({
+    collectionId: PropTypes.number,
     artistName: PropTypes.string,
     collectionName: PropTypes.string,
     artworkUrl100: PropTypes.string,
