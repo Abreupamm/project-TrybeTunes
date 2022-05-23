@@ -29,22 +29,29 @@ class Album extends React.Component {
     return (
       <div data-testid="page-album">
         <Header />
-        <span data-testid="artist-name">{ artist.artistName }</span>
-        <br />
-        <span data-testid="album-name">{ artist.collectionName }</span>
-        {
-          musicsList.map((music, index) => {
-            if (index > 0) {
-              return (<MusicCard
-                musicFavorite={ music }
-                trackId={ music.trackId }
-                trackName={ music.trackName }
-                previewUrl={ music.previewUrl }
-              />);
+        <div className="container-artist">
+          <div className="container-preview-artist">
+            <img src={ artist.artworkUrl100 }/>
+            <span data-testid="artist-name">{ artist.artistName }</span>
+            <br />
+            <span data-testid="album-name">{ artist.collectionName }</span>
+          </div>
+          <div className="container-preview-musics">
+            {
+              musicsList.map((music, index) => {
+                if (index > 0) {
+                  return (<MusicCard
+                    musicFavorite={ music }
+                    trackId={ music.trackId }
+                    trackName={ music.trackName }
+                    previewUrl={ music.previewUrl }
+                  />);
+                }
+                return null;
+              })
             }
-            return null;
-          })
-        }
+          </div>
+        </div>
       </div>
     );
   }
