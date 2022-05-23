@@ -6,10 +6,11 @@ class MusicCard extends React.Component {
   state = {
     favorite: false,
   }
+
   handleOnClick = async () => {
     const { musicFavorite } = this.props;
     this.setState({ favorite: true });
-    const addMusic = await addSong(musicFavorite);
+    await addSong(musicFavorite);
     this.setState({ favorite: false });
   }
 
@@ -36,7 +37,7 @@ class MusicCard extends React.Component {
           <input
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
-            onClick={this.handleOnClick}
+            onClick={ this.handleOnClick }
           />
         </label>
       </div>
@@ -48,7 +49,7 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  musicFavorite: PropTypes.object.isRequired,
+  musicFavorite: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default MusicCard;
