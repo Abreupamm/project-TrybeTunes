@@ -21,13 +21,13 @@ class CardAlbuns extends React.Component {
   }
 }
 
-CardAlbuns.propType = {
-  album: PropTypes.exact({
-    collectionId: PropTypes.number,
+CardAlbuns.propTypes = {
+  album: PropTypes.shape({
+    collectionId: PropTypes.number.isRequired,
     artistName: PropTypes.string,
     collectionName: PropTypes.string,
     artworkUrl100: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 export default CardAlbuns;
