@@ -56,22 +56,23 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <Header />
-        <h1>Search</h1>
-        <input
-          value={ artistName }
-          data-testid="search-artist-input"
-          type="text"
-          onChange={ this.handleOnChange }
-        />
-        <button
-          name={ artistName }
-          data-testid="search-artist-button"
-          type="button"
-          disabled={ disabled }
-          onClick={ this.handleOnClick }
-        >
-          Pesquisar
-        </button>
+        <div className="container-search">
+          <input
+            value={ artistName }
+            data-testid="search-artist-input"
+            type="text"
+            onChange={ this.handleOnChange }
+          />
+          <button
+            name={ artistName }
+            data-testid="search-artist-button"
+            type="button"
+            disabled={ disabled }
+            onClick={ this.handleOnClick }
+          >
+            Pesquisar
+          </button>
+        </div>
         {
           returnArtist && <ResultAlbuns
             albuns={ listAlbuns }

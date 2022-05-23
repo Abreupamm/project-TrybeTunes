@@ -6,21 +6,33 @@ class ResultAlbuns extends React.Component {
   render() {
     const { artist, albuns } = this.props;
     if (!albuns.length) {
-      return <h1>Nenhum álbum foi encontrado</h1>;
+      return (
+        <h1
+          className="result-text"
+        >
+          Nenhum álbum foi encontrado
+        </h1>
+      );
     }
     return (
       <div>
-        <h3>
+        <h3
+          className="result-text"
+        >
           {`Resultado de álbuns de: ${artist}`}
         </h3>
-        {
-          albuns.map((card) => (
-            <CardAlbuns
-              key={ card.collectionId }
-              album={ card }
-            />
-          ))
-        }
+        <div
+          className="container-result-albuns"
+        >
+          {
+            albuns.map((card) => (
+              <CardAlbuns
+                key={ card.collectionId }
+                album={ card }
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
