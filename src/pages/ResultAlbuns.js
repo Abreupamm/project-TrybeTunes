@@ -11,8 +11,7 @@ class ResultAlbuns extends React.Component {
     return (
       <div>
         <h3>
-          Resultado de álbuns de:
-          {artist}
+          {`Resultado de álbuns de: ${artist}`}
         </h3>
         {
           albuns.map((card) => (

@@ -19,7 +19,7 @@ code {
   justify-content: center;
 } */
 
-.login-page {
+.login-page, .loading {
   background-color: black;
   height: 100%;
   width: 100%;
@@ -44,7 +44,7 @@ code {
   color: rgba(182, 114, 246, 0.855);
 }
 
-.title img {
+.title img, .title-header img{
 width: 50px;
 margin-left: 10px;
 }
@@ -87,7 +87,64 @@ color: rgb(56, 52, 52);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 5px;
 }
-/* 
-.loadind  h1{
+
+.loading-gif {
+  background-image: url('https://gifimage.net/wp-content/uploads/2018/10/audio-spectrum-gif.gif');
+  background-repeat: no-repeat;
+  width: 90%;
+  height: 90%;
+  border: solid 1px black;
+  background-position: center;
+}
+
+.loading  h1{
 color: aliceblue;
-} */
+text-align: center;
+margin: 20%;
+}
+
+header {
+background-color: black;
+color: aliceblue;
+display: flex;
+justify-content:space-between;
+align-items: center;
+}
+
+.title-header {
+  color: aliceblue;
+  text-align: center;
+  margin-top: 10px;
+}
+.title-header h1 {
+  font-size: 30px;
+  display: inline;
+}
+
+.title-header h2 {
+  font-size: 30px;
+  margin-top: 0;
+  margin-left: 80px;
+  color: rgba(182, 114, 246, 0.855);
+}
+
+nav .link {
+  margin-right: 60px;
+  font-size: 20px;
+}
+
+header p {
+  font-size: 25px;
+  margin-right: 50px;
+}
+
+header .icone {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+header .container-usuario {
+  display: flex;
+  align-items: center;
+}

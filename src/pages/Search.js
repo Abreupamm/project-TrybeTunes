@@ -72,10 +72,12 @@ class Search extends React.Component {
         >
           Pesquisar
         </button>
-        {returnArtist && <ResultAlbuns
-          albuns={ listAlbuns }
-          artist={ artistAlbum }
-        />}
+        {
+          returnArtist && <ResultAlbuns
+            albuns={ listAlbuns }
+            artist={ artistAlbum }
+          />
+        }
       </div>
     );
   }
