@@ -5,10 +5,24 @@ import { addSong } from '../services/favoriteSongsAPI';
 class MusicCard extends React.Component {
   state = {
     favorite: false,
+    checked: false,
   }
+
+  // componentDidMount = () => {
+  //   const { favoritesSongs, trackId } = this.props;
+  //   const result = favoritesSongs.some((music) => {
+  //     return music.trackId === trackId;
+  //   });
+  //   if (result) {
+  //    this.setState({ checked: true });
+  //   }
+  // }
 
   handleOnClick = async () => {
     const { musicFavorite } = this.props;
+    const { checked } = this.state;
+    const validation = checked;
+    this.setState({ checked: !validation })
     this.setState({ favorite: true });
     await addSong(musicFavorite);
     this.setState({ favorite: false });
@@ -16,7 +30,7 @@ class MusicCard extends React.Component {
 
   render() {
     const { trackName, previewUrl, trackId } = this.props;
-    const { favorite } = this.state;
+    const { favorite, checked } = this.state;
     return (
       <div className="container-music-card">
         <span>{ trackName }</span>
@@ -33,8 +47,9 @@ class MusicCard extends React.Component {
         <label
           htmlFor="favorita"
         >
-          { favorite ? 'Carregando...' : 'Favorita' }
+          {favorite ? 'Carregando...' : 'Favorita'}
           <input
+            checked={ checked }
             data-testid={ `checkbox-music-${trackId}` }
             type="checkbox"
             onClick={ this.handleOnClick }
@@ -50,6 +65,7 @@ MusicCard.propTypes = {
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   musicFavorite: PropTypes.objectOf(PropTypes.string).isRequired,
+  favoritesSongs: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MusicCard;

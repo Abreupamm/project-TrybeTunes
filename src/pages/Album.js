@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loading from '../components/Loading'
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends React.Component {
   state = {
     artist: {},
     musicsList: [],
+    loading: true,
+    favoritesSongs: [],
   }
 
   artistAlbuns = async () => {
@@ -20,12 +24,24 @@ class Album extends React.Component {
     return this.setState({ artist: musics[0] });
   }
 
+  recoverFavoriteSongs = async () => {
+    const result = await getFavoriteSongs();
+    this.setState({ loading: false });
+    this.setState({ favoritesSongs: result });
+    return result;
+  }
+
   componentDidMount = () => {
     this.artistAlbuns();
+    const favorites = this.recoverFavoriteSongs();
+    this.setState({ favoritesSongs: favorites });
   }
 
   render() {
-    const { artist, musicsList } = this.state;
+    const { artist, musicsList, loading, favoritesSongs } = this.state;
+    if (loading) {
+      return <Loading />
+    }
     return (
       <div data-testid="page-album">
         <Header />
@@ -44,7 +60,8 @@ class Album extends React.Component {
                     musicFavorite={ music }
                     trackId={ music.trackId }
                     trackName={ music.trackName }
-                    previewUrl={ music.previewUrl }
+                    previewUrl={music.previewUrl}
+                    favoritesSongs={ favoritesSongs }
                   />);
                 }
                 return null;
