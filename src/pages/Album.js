@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loading from '../components/Loading'
+import Loading from '../components/Loading';
 import Header from '../components/Header';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
@@ -40,14 +40,14 @@ class Album extends React.Component {
   render() {
     const { artist, musicsList, loading, favoritesSongs } = this.state;
     if (loading) {
-      return <Loading />
+      return <Loading />;
     }
     return (
       <div data-testid="page-album">
         <Header />
         <div className="container-artist">
           <div className="container-preview-artist">
-            <img src={ artist.artworkUrl100 }/>
+            <img src={ artist.artworkUrl100 } alt={ artist.collectionName } />
             <span data-testid="artist-name">{ artist.artistName }</span>
             <br />
             <span data-testid="album-name">{ artist.collectionName }</span>
@@ -60,7 +60,7 @@ class Album extends React.Component {
                     musicFavorite={ music }
                     trackId={ music.trackId }
                     trackName={ music.trackName }
-                    previewUrl={music.previewUrl}
+                    previewUrl={ music.previewUrl }
                     favoritesSongs={ favoritesSongs }
                   />);
                 }

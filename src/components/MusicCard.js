@@ -8,21 +8,20 @@ class MusicCard extends React.Component {
     checked: false,
   }
 
-  // componentDidMount = () => {
-  //   const { favoritesSongs, trackId } = this.props;
-  //   const result = favoritesSongs.some((music) => {
-  //     return music.trackId === trackId;
-  //   });
-  //   if (result) {
-  //    this.setState({ checked: true });
-  //   }
-  // }
+  componentDidMount = async () => {
+    const { favoritesSongs, trackId } = this.props;
+    const musicList = await favoritesSongs;
+    const result = musicList.some((music) => music.trackId === trackId);
+    if (result) {
+      this.setState({ checked: true });
+    }
+  }
 
   handleOnClick = async () => {
     const { musicFavorite } = this.props;
     const { checked } = this.state;
     const validation = checked;
-    this.setState({ checked: !validation })
+    this.setState({ checked: !validation });
     this.setState({ favorite: true });
     await addSong(musicFavorite);
     this.setState({ favorite: false });
