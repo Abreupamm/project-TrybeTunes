@@ -35,7 +35,7 @@ class Header extends React.Component {
             alt="icone de usuário"
           />
           <p data-testid="header-user-name">
-            { isUser ? userName : 'Carregando...' }
+            { isUser && userName }
           </p>
         </div>
       </header>

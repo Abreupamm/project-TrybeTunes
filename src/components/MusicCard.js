@@ -71,8 +71,11 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
-  musicFavorite: PropTypes.objectOf(PropTypes.string).isRequired,
-  favoritesSongs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  musicFavorite: PropTypes.shape({
+    trackId: PropTypes.number,
+    trackName: PropTypes.string,
+  }).isRequired,
+  favoritesSongs: PropTypes.func.isRequired,
   UpdateSongList: PropTypes.func.isRequired,
 };
 

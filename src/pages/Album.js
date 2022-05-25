@@ -19,7 +19,7 @@ class Album extends React.Component {
     const { params } = match;
     const { id } = params;
     const musics = await getMusics(id);
-    console.log(musics);
+    // console.log(musics);
     this.setState({ musicsList: musics });
     return this.setState({ artist: musics[0] });
   }
@@ -57,6 +57,7 @@ class Album extends React.Component {
               musicsList.map((music, index) => {
                 if (index > 0) {
                   return (<MusicCard
+                    key={ music.trackId }
                     musicFavorite={ music }
                     trackId={ music.trackId }
                     trackName={ music.trackName }
