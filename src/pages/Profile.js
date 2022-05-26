@@ -17,37 +17,39 @@ class Profile extends React.Component {
     this.setState({ loading: true });
     const User = await getUser();
     // console.log(User);
-    this.setState({ loading: false });
-    this.setState({ name: User.name });
-    this.setState({ email: User.email });
-    this.setState({ image: User.image });
-    this.setState({ description: User.description });
+    this.setState({ loading: false,
+      name: User.name,
+      email: User.email,
+      image: User.image,
+      description: User.description });
   }
 
   render() {
     const { loading, name, email, image, description } = this.state;
-    if (loading) {
-      return <Loading />;
-    }
+    // if (loading) {
+    //   return <Loading />;
+    // }
     return (
       <div data-testid="page-profile">
         <Header />
-        <div>
+        {loading ? <Loading /> : (
           <div>
-            <img
-              data-testid="profile-image"
-              src={ image }
-              alt={ name }
-            />
-            <Link to="/profile/edit">Editar perfil</Link>
+            <div>
+              <img
+                data-testid="profile-image"
+                src={ image }
+                alt={ name }
+              />
+              <Link to="/profile/edit">Editar perfil</Link>
+            </div>
+            <h3>Nome</h3>
+            <p>{name}</p>
+            <h3>E-mail</h3>
+            <p>{email}</p>
+            <h3>Descrição</h3>
+            <p>{description}</p>
           </div>
-          <h3>Nome</h3>
-          <p>{ name }</p>
-          <h3>E-mail</h3>
-          <p>{ email }</p>
-          <h3>Descrição</h3>
-          <p>{ description }</p>
-        </div>
+        )}
       </div>
     );
   }

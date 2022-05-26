@@ -5,7 +5,7 @@ import NavLinks from './NavLinks';
 class Header extends React.Component {
   state = {
     userName: '',
-    isUser: false,
+    isUser: true,
   }
 
   componentDidMount() {
@@ -13,13 +13,17 @@ class Header extends React.Component {
   }
 
   handleRenderUser = async () => {
+    this.setState({ isUser: false });
     const response = await getUser();
-    this.setState({ isUser: true });
-    return this.setState({ userName: response.name });
+    this.setState({ isUser: true,
+      userName: response.name });
   }
 
   render() {
     const { userName, isUser } = this.state;
+    if (!isUser) {
+      return '';
+    }
     return (
       <header data-testid="header-component">
         <div className="title-header">
@@ -34,9 +38,7 @@ class Header extends React.Component {
             src="https://cdn-icons-png.flaticon.com/512/2522/2522050.png"
             alt="icone de usuário"
           />
-          <p data-testid="header-user-name">
-            { isUser && userName }
-          </p>
+          { userName }
         </div>
       </header>
     );

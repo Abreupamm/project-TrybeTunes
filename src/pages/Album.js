@@ -39,38 +39,40 @@ class Album extends React.Component {
 
   render() {
     const { artist, musicsList, loading, favoritesSongs } = this.state;
-    if (loading) {
-      return <Loading />;
-    }
+    // if (loading) {
+    //   return <Loading />;
+    // }
     return (
       <div data-testid="page-album">
         <Header />
-        <div className="container-artist">
-          <div className="container-preview-artist">
-            <img src={ artist.artworkUrl100 } alt={ artist.collectionName } />
-            <span data-testid="artist-name">{ artist.artistName }</span>
-            <br />
-            <span data-testid="album-name">{ artist.collectionName }</span>
+        {loading ? <Loading /> : (
+          <div className="container-artist">
+            <div className="container-preview-artist">
+              <img src={ artist.artworkUrl100 } alt={ artist.collectionName } />
+              <span data-testid="artist-name">{artist.artistName}</span>
+              <br />
+              <span data-testid="album-name">{artist.collectionName}</span>
+            </div>
+            <div className="container-preview-musics">
+              {
+                musicsList.map((music, index) => {
+                  if (index > 0) {
+                    return (<MusicCard
+                      key={ music.trackId }
+                      musicFavorite={ music }
+                      trackId={ music.trackId }
+                      trackName={ music.trackName }
+                      previewUrl={ music.previewUrl }
+                      favoritesSongs={ favoritesSongs }
+                      UpdateSongList={ () => { } }
+                    />);
+                  }
+                  return null;
+                })
+              }
+            </div>
           </div>
-          <div className="container-preview-musics">
-            {
-              musicsList.map((music, index) => {
-                if (index > 0) {
-                  return (<MusicCard
-                    key={ music.trackId }
-                    musicFavorite={ music }
-                    trackId={ music.trackId }
-                    trackName={ music.trackName }
-                    previewUrl={ music.previewUrl }
-                    favoritesSongs={ favoritesSongs }
-                    UpdateSongList={ () => {} }
-                  />);
-                }
-                return null;
-              })
-            }
-          </div>
-        </div>
+        )}
       </div>
     );
   }

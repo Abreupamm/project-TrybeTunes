@@ -23,13 +23,13 @@ class Favorites extends React.Component {
 
   render() {
     const { loading, musicsList } = this.state;
-    if (loading) {
-      return <Loading />;
-    }
+    // if (loading) {
+    //   return <Loading />;
+    // }
     return (
       <div data-testid="page-favorites">
         <Header />
-        {
+        { loading ? <Loading /> : (
           musicsList.map((music) => (
             <MusicCard
               key={ music.trackId }
@@ -41,7 +41,7 @@ class Favorites extends React.Component {
               UpdateSongList={ this.handleUpdateSongsList }
             />
           ))
-        }
+        )}
       </div>
     );
   }
