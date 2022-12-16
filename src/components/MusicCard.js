@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Heart from 'react-heart';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   state = {
-    favorite: false,
-    checked: false,
+    active: false,
   }
 
   componentDidMount = async () => {
@@ -13,33 +13,30 @@ class MusicCard extends React.Component {
     const musicList = await favoritesSongs;
     const result = musicList.some((music) => music.trackId === trackId);
     if (result) {
-      this.setState({ checked: true });
+      this.setState({ active: true });
     }
   }
 
   handleOnClick = async () => {
-    const { musicFavorite, UpdateSongList } = this.props;
-    const { checked } = this.state;
-    const validation = checked;
-    this.setState({ checked: !validation });
-    if (checked) {
-      this.setState({ favorite: true });
+    const { musicFavorite } = this.props;
+    const { active } = this.state;
+    const validation = active;
+    this.setState({ active: !validation });
+    if (active) {
       await removeSong(musicFavorite);
-      this.setState({ favorite: false });
-      UpdateSongList();
     } else {
-      this.setState({ favorite: true });
       await addSong(musicFavorite);
-      this.setState({ favorite: false });
     }
   }
 
   render() {
-    const { trackName, previewUrl, trackId } = this.props;
-    const { favorite, checked } = this.state;
+    const { trackName, previewUrl } = this.props;
+    const { active } = this.state;
     return (
       <div className="container-music-card">
-        <span>{ trackName }</span>
+        <div className="music-name">
+          <span>{ trackName }</span>
+        </div>
         <audio
           data-testid="audio-component"
           src={ previewUrl }
@@ -50,18 +47,14 @@ class MusicCard extends React.Component {
           <code>audio</code>
           .
         </audio>
-        <label
-          htmlFor="favorita"
-        >
-          {favorite ? 'Carregando...' : 'Favorita'}
-          <input
-            id="favorita"
-            checked={ checked }
-            data-testid={ `checkbox-music-${trackId}` }
-            type="checkbox"
+        <div style={ { width: '2rem' } }>
+          <Heart
+            inactiveColor="aliceblue"
+            activeColor="rgba(182, 114, 246, 0.855)"
+            isActive={ active }
             onClick={ this.handleOnClick }
           />
-        </label>
+        </div>
       </div>
     );
   }
@@ -76,7 +69,6 @@ MusicCard.propTypes = {
     trackName: PropTypes.string,
   }).isRequired,
   favoritesSongs: PropTypes.func.isRequired,
-  UpdateSongList: PropTypes.func.isRequired,
 };
 
 export default MusicCard;

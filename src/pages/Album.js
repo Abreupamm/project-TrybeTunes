@@ -62,7 +62,7 @@ class Album extends React.Component {
                     trackName={ music.trackName }
                     previewUrl={ music.previewUrl }
                     favoritesSongs={ favoritesSongs }
-                    UpdateSongList={ () => { } }
+                    // UpdateSongList={ () => { } }
                   />);
                 }
                 return null;
