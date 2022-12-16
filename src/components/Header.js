@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { getUser } from '../services/userAPI';
 import NavLinks from './NavLinks';
 
 class Header extends React.Component {
   state = {
-    userName: '',
-    isUser: true,
+    userName: 'Carregando...',
   }
 
   componentDidMount() {
@@ -13,14 +13,13 @@ class Header extends React.Component {
   }
 
   handleRenderUser = async () => {
-    this.setState({ isUser: false });
     const response = await getUser();
-    this.setState({ isUser: true,
-      userName: response.name });
+    this.setState({ userName: response.name });
   }
 
   render() {
-    const { userName, isUser } = this.state;
+    const { userName } = this.state;
+    const { isUser } = this.props;
     if (!isUser) {
       return '';
     }
@@ -44,5 +43,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  isUser: PropTypes.string.isRequired,
+};
 
 export default Header;

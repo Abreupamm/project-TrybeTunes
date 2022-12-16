@@ -16,7 +16,6 @@ class Profile extends React.Component {
   componentDidMount = async () => {
     this.setState({ loading: true });
     const User = await getUser();
-    // console.log(User);
     this.setState({ loading: false,
       name: User.name,
       email: User.email,
@@ -26,30 +25,28 @@ class Profile extends React.Component {
 
   render() {
     const { loading, name, email, image, description } = this.state;
-    // if (loading) {
-    //   return <Loading />;
-    // }
+    if (loading) {
+      return <Loading />;
+    }
     return (
       <div data-testid="page-profile">
-        <Header />
-        {loading ? <Loading /> : (
+        <Header isUser="true" />
+        <div>
           <div>
-            <div>
-              <img
-                data-testid="profile-image"
-                src={ image }
-                alt={ name }
-              />
-              <Link to="/profile/edit">Editar perfil</Link>
-            </div>
-            <h3>Nome</h3>
-            <p>{name}</p>
-            <h3>E-mail</h3>
-            <p>{email}</p>
-            <h3>Descrição</h3>
-            <p>{description}</p>
+            <img
+              data-testid="profile-image"
+              src={ image }
+              alt={ name }
+            />
+            <Link to="/profile/edit">Editar perfil</Link>
           </div>
-        )}
+          <h3>Nome</h3>
+          <p>{name}</p>
+          <h3>E-mail</h3>
+          <p>{email}</p>
+          <h3>Descrição</h3>
+          <p>{description}</p>
+        </div>
       </div>
     );
   }

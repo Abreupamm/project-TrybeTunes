@@ -50,31 +50,29 @@ class Search extends React.Component {
       artistAlbum,
       listAlbuns,
     } = this.state;
-    // if (click) {
-    //   return <Loading />;
-    // }
+    if (click) {
+      return <Loading />;
+    }
     return (
       <div data-testid="page-search">
-        <Header />
-        {click ? <Loading /> : (
-          <div className="container-search">
-            <input
-              value={ artistName }
-              data-testid="search-artist-input"
-              type="text"
-              onChange={ this.handleOnChange }
-            />
-            <button
-              name={ artistName }
-              data-testid="search-artist-button"
-              type="button"
-              disabled={ disabled }
-              onClick={ this.handleOnClick }
-            >
-              Pesquisar
-            </button>
-          </div>
-        )}
+        <Header isUser="true" />
+        <div className="container-search">
+          <input
+            value={ artistName }
+            data-testid="search-artist-input"
+            type="text"
+            onChange={ this.handleOnChange }
+          />
+          <button
+            name={ artistName }
+            data-testid="search-artist-button"
+            type="button"
+            disabled={ disabled }
+            onClick={ this.handleOnClick }
+          >
+            Pesquisar
+          </button>
+        </div>
         {
           returnArtist && <ResultAlbuns
             albuns={ listAlbuns }
