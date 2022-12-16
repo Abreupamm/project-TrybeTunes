@@ -221,3 +221,14 @@ padding: 0%;
 .container-music-card .music-name {
   width: 150px;
 }
+
+.container-music-favorites {
+  width: 60%;
+  margin: 30px auto;
+}
+
+.conatiner-profileEdit img {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}

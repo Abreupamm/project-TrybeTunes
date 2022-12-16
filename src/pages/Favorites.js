@@ -29,19 +29,21 @@ class Favorites extends React.Component {
     return (
       <div data-testid="page-favorites">
         <Header isUser="true" />
-        {
-          musicsList.map((music) => (
-            <MusicCard
-              key={ music.trackId }
-              musicFavorite={ music }
-              trackId={ music.trackId }
-              trackName={ music.trackName }
-              previewUrl={ music.previewUrl }
-              favoritesSongs={ musicsList }
-              UpdateSongList={ this.handleUpdateSongsList }
-            />
-          ))
-        }
+        <div className="container-music-favorites">
+          {
+            musicsList.map((music) => (
+              <MusicCard
+                key={ music.trackId }
+                musicFavorite={ music }
+                trackId={ music.trackId }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                favoritesSongs={ musicsList }
+                UpdateSongList={ this.handleUpdateSongsList }
+              />
+            ))
+          }
+        </div>
       </div>
     );
   }
