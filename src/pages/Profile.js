@@ -31,8 +31,8 @@ class Profile extends React.Component {
     return (
       <div data-testid="page-profile">
         <Header isUser="true" />
-        <div>
-          <div>
+        <div className="profile">
+          <div className="image">
             <img
               data-testid="profile-image"
               src={ image }
@@ -40,12 +40,14 @@ class Profile extends React.Component {
             />
             <Link to="/profile/edit">Editar perfil</Link>
           </div>
-          <h3>Nome</h3>
-          <p>{name}</p>
-          <h3>E-mail</h3>
-          <p>{email}</p>
-          <h3>Descrição</h3>
-          <p>{description}</p>
+          <div>
+            <h3>Nome:</h3>
+            <p>{name}</p>
+            <h3>E-mail:</h3>
+            <p>{email}</p>
+            <h3>Descrição:</h3>
+            <p>{description}</p>
+          </div>
         </div>
       </div>
     );

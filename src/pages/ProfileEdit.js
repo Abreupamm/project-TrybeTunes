@@ -34,7 +34,8 @@ class ProfileEdit extends React.Component {
   }
 
   handleOnClick = async () => {
-    await createUser(this.state);
+    const { name, email, image, description } = this.state;
+    await createUser({ name, email, image, description });
     this.setState({ save: true });
   }
 
@@ -46,41 +47,42 @@ class ProfileEdit extends React.Component {
     }
 
     return (
-      <div className="conatiner-profileEdit" data-testid="page-profile-edit">
+      <div data-testid="page-profile-edit">
         <Header isUser="true" />
-        {
-          save ? (
-            <>
-              <h2>Perfil salvo</h2>
-              <Link to="/profile">Voltar</Link>
-            </>
-          ) : (
-            <>
-              <h1>ProfileEdit</h1>
-              <img src={ image } alt="profile" />
-              <input type="file" onChange={ this.handleOnChangeImage } />
-              <form>
-                <label form="name">
-                  Nome
-                  <input value={ name } id="name" onChange={ this.handleOnChange } />
-                </label>
-                <label form="email">
-                  E-mail
-                  <input value={ email } id="email" onChange={ this.handleOnChange } />
-                </label>
-                <label form="description">
-                  Descrição
-                  <input
-                    value={ description }
-                    id="description"
-                    onChange={ this.handleOnChange }
-                  />
-                </label>
-              </form>
-              <button type="button" onClick={ this.handleOnClick }>SALVAR</button>
-            </>
-          )
-        }
+        <div className="conatiner-profileEdit">
+          {
+            save ? (
+              <div className="save-profile">
+                <h2>Perfil salvo</h2>
+                <Link to="/profile">Voltar</Link>
+              </div>
+            ) : (
+              <>
+                <img src={ image } alt="profile" />
+                <input type="file" onChange={ this.handleOnChangeImage } />
+                <form>
+                  <label htmlFor="name">
+                    Nome:
+                    <input value={ name } id="name" onChange={ this.handleOnChange } />
+                  </label>
+                  <label htmlFor="email">
+                    E-mail:
+                    <input value={ email } id="email" onChange={ this.handleOnChange } />
+                  </label>
+                  <label htmlFor="description">
+                    Descrição:
+                    <input
+                      value={ description }
+                      id="description"
+                      onChange={ this.handleOnChange }
+                    />
+                  </label>
+                </form>
+                <button type="button" onClick={ this.handleOnClick }>SALVAR</button>
+              </>
+            )
+          }
+        </div>
       </div>
     );
   }
