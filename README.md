@@ -26,7 +26,7 @@ Qual é o seu estilo musical favorito? Nesse projeto criei uma aplicação para 
 ---
 
 ### Protótipo do projeto
-![Project Gif](./trybeyunes.gif)
+![Project Gif](/trybetunes.gif)
 
 ---
 
